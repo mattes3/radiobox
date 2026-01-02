@@ -212,10 +212,8 @@ function getDIDLItemXml(stations: RadioStation[]) {
             <dc:creator>radio</dc:creator>
             <upnp:album></upnp:album>
             <upnp:artist></upnp:artist>
-            <res protocolInfo="http-get:*:audio/x-mpegurl:*" duration="0:00:01" size="200">${SERVER_URL}/media/${encodeURIComponent(
-            station.id,
-        )}</res>
-            <upnp:class>object.item.audioItem.audioBroadcast</upnp:class>
+            <res protocolInfo="http-get:*:application/octet-stream:*">${station.streamUrl}</res>
+            <upnp:class>object.item</upnp:class>
         </item>
     `.trim();
     });

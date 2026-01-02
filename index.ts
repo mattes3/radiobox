@@ -1,6 +1,5 @@
-import path from 'path';
 import { startSSDPBroadcast } from './lib/dlna/broadcast';
-import { HTTP_PORT, SERVER_NAME, SERVER_URL } from './lib/dlna/config';
+import { HTTP_PORT, SERVER_NAME } from './lib/dlna/config';
 import {
     getBrowseResponseXml,
     getCdsXml,
@@ -8,7 +7,7 @@ import {
     getSearchCapabilitiesResponseXml,
     getSortCapabilitiesResponseXml,
 } from './lib/dlna/xml-templates';
-import { allStations, findStation, getM3U } from './lib/scanner';
+import { allStations } from './lib/scanner';
 
 // Start SSDP broadcast
 startSSDPBroadcast();
@@ -80,62 +79,6 @@ const server = Bun.serve({
                 }
 
                 return new Response('Invalid request', { status: 400 });
-            },
-        },
-        '/media/*': {
-            HEAD: (req) => {
-                console.log(server.requestIP(req), 'HTTP HEAD ', req.url);
-                const stationId = decodeURIComponent(path.relative(`${SERVER_URL}/media`, req.url));
-                const station = findStation(stationId);
-                if (station.isNone()) {
-                    console.log('Station not found');
-                    return Response.json({ error: 'Station not found' }, { status: 404 });
-                }
-
-                console.log({
-                    headers: {
-                        'Content-Type': 'audio/x-mpegurl',
-                        'Accept-Ranges': 'bytes',
-                        'Content-Length': String(station.value.streamUrl.length),
-                    },
-                });
-                return new Response(null, {
-                    headers: {
-                        'Content-Type': 'audio/x-mpegurl',
-                        'Accept-Ranges': 'bytes',
-                        'Content-Length': String(station.value.streamUrl.length),
-                    },
-                });
-            },
-            GET: (req) => {
-                console.log(server.requestIP(req), 'HTTP GET ', req.url);
-                const stationId = decodeURIComponent(path.relative(`${SERVER_URL}/media`, req.url));
-                const station = findStation(stationId);
-                if (station.isNone()) {
-                    return Response.json({ error: 'Station not found' }, { status: 404 });
-                }
-
-                const m3uContents = getM3U(station.value);
-                console.log({
-                    status: 302,
-                    headers: {
-                        Location: station.value.streamUrl,
-                    },
-                });
-                /*
-                return new Response(m3uContents, {
-                    headers: {
-                        'Content-Type': 'audio/x-mpegurl',
-                        'Content-Length': String(m3uContents.length),
-                    },
-                });
-                */
-                return new Response(null, {
-                    status: 302,
-                    headers: {
-                        Location: station.value.streamUrl,
-                    },
-                });
             },
         },
         '/*': {

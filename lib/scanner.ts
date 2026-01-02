@@ -1,51 +1,60 @@
 import { None, Some, type Option } from 'ts-results-es';
 import type { RadioStation } from './radiotypes';
 
-const SUPPORTED_MIME_TYPES = ['video/mp4', 'audio/x-mpegurl', 'application/x-mpegurl'];
-
 type RadioStationWithoutId = Omit<RadioStation, 'id'>;
 
 const radioStations: RadioStationWithoutId[] = [
     {
         name: 'Bayern 1',
-        streamUrl: 'https://dispatcher.rndfnk.com/br/br1/obb/mp3/mid',
+        streamUrl: 'http://streams.br.de/bayern1obb_2.m3u',
     },
     {
         name: 'Bayern 2',
-        streamUrl: 'https://dispatcher.rndfnk.com/br/br2/live/mp3/mid',
+        streamUrl: 'http://streams.br.de/bayern2_2.m3u',
     },
     {
         name: 'Bayern 3',
-        streamUrl: 'https://dispatcher.rndfnk.com/br/br3/live/mp3/mid',
+        streamUrl: 'http://streams.br.de/bayern3_2.m3u',
+    },
+    {
+        name: 'BR-Klassik',
+        streamUrl: 'http://streams.br.de/br-klassik_3.m3u',
     },
     {
         name: 'BR Puls',
-        streamUrl: 'https://dispatcher.rndfnk.com/br/puls/live/mp3/mid',
+        streamUrl: 'http://streams.br.de/puls_2.m3u',
     },
     {
-        name: 'WDR 1LIVE',
-        streamUrl: 'https://wdr-1live-live.icecastssl.wdr.de/wdr/1live/live/mp3/128/stream.mp3',
+        name: 'SWR 1',
+        streamUrl: 'http://liveradio.swr.de/sw282p3/swr1bw/play.m3u',
+    },
+    {
+        name: 'SWR Kultur',
+        streamUrl: 'http://liveradio.swr.de/sw282p3/swr2/play.m3u',
+    },
+    {
+        name: 'SWR 3',
+        streamUrl: 'http://liveradio.swr.de/sw282p3/swr3/play.m3u',
+    },
+    {
+        name: 'SWR 4',
+        streamUrl: 'http://liveradio.swr.de/sw282p3/swr4bw/play.m3u',
     },
     {
         name: 'WDR 2',
-        streamUrl:
-            'https://wdr-wdr2-rheinland.icecastssl.wdr.de/wdr/wdr2/rheinland/mp3/128/stream.mp3',
+        streamUrl: 'http://www.wdr.de/wdrlive/media/wdr2.m3u',
     },
     {
         name: 'WDR 3',
-        streamUrl: 'https://wdr-wdr3-live.icecastssl.wdr.de/wdr/wdr3/live/mp3/256/stream.mp3',
+        streamUrl: 'http://www.wdr.de/wdrlive/media/wdr3_hq.m3u',
     },
     {
         name: 'WDR 4',
-        streamUrl: 'https://wdr-wdr4-live.icecastssl.wdr.de/wdr/wdr4/live/mp3/128/stream.mp3',
+        streamUrl: 'http://www.wdr.de/wdrlive/media/wdr4.m3u',
     },
     {
         name: 'WDR 5',
-        streamUrl: 'https://wdr-wdr5-live.icecastssl.wdr.de/wdr/wdr5/live/mp3/128/stream.mp3',
-    },
-    {
-        name: 'Radio Bonn-Rhein-Sieg',
-        streamUrl: 'https://stream.lokalradio.nrw/444z6zk',
+        streamUrl: 'http://www.wdr.de/wdrlive/media/wdr5.m3u',
     },
 ];
 
@@ -66,9 +75,4 @@ export function allStations(): RadioStation[] {
 export function findStation(id: string): Option<RadioStation> {
     const station = allStations().find((s) => s.id === id);
     return station ? Some(station) : None;
-}
-
-export function getM3U(station: RadioStation): string {
-    // return `#EXTM3U\n#EXTINF:-1, ${station.name}\n${station.streamUrl}`;
-    return station.streamUrl;
 }

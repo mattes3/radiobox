@@ -34,20 +34,6 @@ export async function startSSDPBroadcast() {
         }
     });
 
-    /*
-NT: upnp:rootdevice
-USN: uuid:592a69a6-ad0c-44ce-b84c-4548e6a4dc6d::upnp:rootdevice
-
-NT: uuid:592a69a6-ad0c-44ce-b84c-4548e6a4dc6d
-USN: uuid:592a69a6-ad0c-44ce-b84c-4548e6a4dc6d
-
-NT: urn:schemas-upnp-org:device:MediaServer:1
-USN: uuid:592a69a6-ad0c-44ce-b84c-4548e6a4dc6d::urn:schemas-upnp-org:device:MediaServer:1
-
-NT: urn:schemas-upnp-org:service:ContentDirectory:1
-USN: uuid:592a69a6-ad0c-44ce-b84c-4548e6a4dc6d::urn:schemas-upnp-org:service:ContentDirectory:1
-*/
-
     function sendNotify() {
         function internalSend(uuid: string, nt: string | null) {
             const notifyMessage = [
