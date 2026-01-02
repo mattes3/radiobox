@@ -155,35 +155,78 @@ export function getBrowseResponseXml(mediaFiles: RadioStation[]) {
             <u:BrowseResponse
                 xmlns:u="urn:schemas-upnp-org:service:ContentDirectory:1">
                 <Result>
-                    <![CDATA[${getDIDLItemXml(mediaFiles)}]]>
+                    ${getDIDLItemXml(mediaFiles)}
                 </Result>
                 <NumberReturned>${mediaFiles.length}</NumberReturned>
                 <TotalMatches>${mediaFiles.length}</TotalMatches>
-                <UpdateID>1</UpdateID>
+                <UpdateID>${Date.now()}</UpdateID>
             </u:BrowseResponse>
         </s:Body>
     </s:Envelope>
     `.trim();
 }
 
+export function getSearchCapabilitiesResponseXml() {
+    return `
+    <?xml version="1.0"?>
+    <s:Envelope
+        xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" 
+                        s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+        <s:Body>
+            <u:GetSearchCapabilitiesResponse xmlns:u="urn:schemas-upnp-org:service:ContentDirectory:1">
+                <SearchCaps></SearchCaps>
+            </u:GetSearchCapabilitiesResponse>
+        </s:Body>
+    </s:Envelope>
+    `.trim();
+}
+
+export function getSortCapabilitiesResponseXml() {
+    return `
+    <?xml version="1.0"?>
+    <s:Envelope
+        xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" 
+                        s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+        <s:Body>
+            <u:GetSortCapabilitiesResponse xmlns:u="urn:schemas-upnp-org:service:ContentDirectory:1">
+                <SortCaps></SortCaps>
+            </u:GetSortCapabilitiesResponse>
+        </s:Body>
+    </s:Envelope>
+    `.trim();
+}
+
 function getDIDLItemXml(stations: RadioStation[]) {
+    function escapeXml(str: string) {
+        return str
+            .replace(/&/g, '&amp;')
+            .replace(/"/g, '&quot;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+    }
+
     const items = stations.map((station, index) => {
         return `
         <item id="${index + 1}" parentID="0" restricted="1">
             <dc:title>${station.name}</dc:title>
-            <res protocolInfo="http-get:*:audio/x-mpegurl:*">${SERVER_URL}/media/${encodeURIComponent(
+            <dc:creator>radio</dc:creator>
+            <upnp:album></upnp:album>
+            <upnp:artist></upnp:artist>
+            <res protocolInfo="http-get:*:audio/x-mpegurl:*" duration="0:00:01" size="200">${SERVER_URL}/media/${encodeURIComponent(
             station.id,
         )}</res>
             <upnp:class>object.item.audioItem.audioBroadcast</upnp:class>
         </item>
     `.trim();
     });
-    return `
-    <?xml version="1.0" encoding="UTF-8"?>
+
+    return escapeXml(
+        `
     <DIDL-Lite xmlns:dc="http://purl.org/dc/elements/1.1/"
             xmlns:upnp="urn:schemas-upnp-org:metadata-1-0/upnp/"
             xmlns="urn:schemas-upnp-org:metadata-1-0/DIDL-Lite/">
         ${items.join('\n')}
     </DIDL-Lite>
-  `.trim();
+  `.trim(),
+    );
 }

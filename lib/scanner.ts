@@ -69,5 +69,6 @@ export function findStation(id: string): Option<RadioStation> {
 }
 
 export function getM3U(station: RadioStation): string {
-    return `#EXTM3U\n#EXTINF:-1, ${station.name}\n${station.streamUrl}`;
+    // return `#EXTM3U\n#EXTINF:-1, ${station.name}\n${station.streamUrl}`;
+    return station.streamUrl;
 }
