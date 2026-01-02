@@ -6,14 +6,46 @@ const SUPPORTED_MIME_TYPES = ['video/mp4', 'audio/x-mpegurl', 'application/x-mpe
 type RadioStationWithoutId = Omit<RadioStation, 'id'>;
 
 const radioStations: RadioStationWithoutId[] = [
-    { name: 'BR24', streamUrl: 'http://dispatcher.rndfnk.com/br/br24/live/mp3/mid' },
     {
-        name: 'BR24 Live',
-        streamUrl: 'http://dispatcher.rndfnk.com/br/br24live/live/mp3/mid',
+        name: 'Bayern 1',
+        streamUrl: 'https://dispatcher.rndfnk.com/br/br1/obb/mp3/mid',
     },
     {
-        name: 'BR Klassik',
-        streamUrl: 'https://dispatcher.rndfnk.com/br/brklassik/live/mp3/mid',
+        name: 'Bayern 2',
+        streamUrl: 'https://dispatcher.rndfnk.com/br/br2/live/mp3/mid',
+    },
+    {
+        name: 'Bayern 3',
+        streamUrl: 'https://dispatcher.rndfnk.com/br/br3/live/mp3/mid',
+    },
+    {
+        name: 'BR Puls',
+        streamUrl: 'https://dispatcher.rndfnk.com/br/puls/live/mp3/mid',
+    },
+    {
+        name: 'WDR 1LIVE',
+        streamUrl: 'https://wdr-1live-live.icecastssl.wdr.de/wdr/1live/live/mp3/128/stream.mp3',
+    },
+    {
+        name: 'WDR 2',
+        streamUrl:
+            'https://wdr-wdr2-rheinland.icecastssl.wdr.de/wdr/wdr2/rheinland/mp3/128/stream.mp3',
+    },
+    {
+        name: 'WDR 3',
+        streamUrl: 'https://wdr-wdr3-live.icecastssl.wdr.de/wdr/wdr3/live/mp3/256/stream.mp3',
+    },
+    {
+        name: 'WDR 4',
+        streamUrl: 'https://wdr-wdr4-live.icecastssl.wdr.de/wdr/wdr4/live/mp3/128/stream.mp3',
+    },
+    {
+        name: 'WDR 5',
+        streamUrl: 'https://wdr-wdr5-live.icecastssl.wdr.de/wdr/wdr5/live/mp3/128/stream.mp3',
+    },
+    {
+        name: 'Radio Bonn-Rhein-Sieg',
+        streamUrl: 'https://stream.lokalradio.nrw/444z6zk',
     },
 ];
 

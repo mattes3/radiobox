@@ -33,7 +33,6 @@ const server = Bun.serve({
                 const body = await req.text();
                 if (body.includes('Browse')) {
                     const resultXML = getBrowseResponseXml(mediaFiles);
-                    console.log(resultXML);
                     return new Response(resultXML, {
                         headers: {
                             'Content-Type': 'text/xml; charset="utf-8"',
@@ -69,7 +68,6 @@ const server = Bun.serve({
                 }
 
                 const m3uContents = getM3U(station.value);
-                console.log(m3uContents);
                 return new Response(m3uContents, {
                     headers: {
                         'Content-Type': 'audio/x-mpegurl',
