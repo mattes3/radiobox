@@ -1,8 +1,15 @@
-import { MANUFACTURER, MANUFACTURER_URL, SERVER_DESCRIPTION, SERVER_NAME, SERVER_URL } from "./config";
-import { getOrCreateUUID } from "./utils";
+import type { RadioStation } from '../radiotypes';
+import {
+    MANUFACTURER,
+    MANUFACTURER_URL,
+    SERVER_DESCRIPTION,
+    SERVER_NAME,
+    SERVER_URL,
+} from './config';
+import { getOrCreateUUID } from './utils';
 
 export function getDescriptionXml() {
-  return `
+    return `
     <?xml version="1.0"?>
     <root xmlns="urn:schemas-upnp-org:device-1-0">
     <specVersion>
@@ -36,7 +43,7 @@ export function getDescriptionXml() {
 }
 
 export function getCdsXml() {
-  return `
+    return `
     <?xml version="1.0"?>
     <scpd xmlns="urn:schemas-upnp-org:service-1-0">
     <specVersion>
@@ -138,8 +145,8 @@ export function getCdsXml() {
   `.trim();
 }
 
-export function getBrowseResponseXml(mediaFiles: string[]) {
-  return `
+export function getBrowseResponseXml(mediaFiles: RadioStation[]) {
+    return `
     <?xml version="1.0"?>
     <s:Envelope
         xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" 
@@ -159,22 +166,24 @@ export function getBrowseResponseXml(mediaFiles: string[]) {
     `.trim();
 }
 
-function getDIDLItemXml(mediaFiles: string[]) {
-  const items = mediaFiles.map((file, index) => {
-    return `
+function getDIDLItemXml(stations: RadioStation[]) {
+    const items = stations.map((station, index) => {
+        return `
         <item id="${index + 1}" parentID="0" restricted="1">
-            <dc:title>${file}</dc:title>
-            <res protocolInfo="http-get:*:video/mp4:*">${SERVER_URL}/media/${encodeURIComponent(file)}</res>
-            <upnp:class>object.item.videoItem.movie</upnp:class>
+            <dc:title>${station.name}</dc:title>
+            <res protocolInfo="http-get:*:audio/x-mpegurl:*">${SERVER_URL}/media/${encodeURIComponent(
+            station.id,
+        )}</res>
+            <upnp:class>object.item.audioItem.audioBroadcast</upnp:class>
         </item>
     `.trim();
-  });
-  return `
+    });
+    return `
     <?xml version="1.0" encoding="UTF-8"?>
     <DIDL-Lite xmlns:dc="http://purl.org/dc/elements/1.1/"
             xmlns:upnp="urn:schemas-upnp-org:metadata-1-0/upnp/"
             xmlns="urn:schemas-upnp-org:metadata-1-0/DIDL-Lite/">
-        ${items.join("\n")}
+        ${items.join('\n')}
     </DIDL-Lite>
   `.trim();
 }

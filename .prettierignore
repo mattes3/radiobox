@@ -1,0 +1,11 @@
+build
+dist
+node_modules
+package.json
+package-lock.json
+yarn.lock
+*.md
+*.yml
+*.json
+*.js
+.yarn
