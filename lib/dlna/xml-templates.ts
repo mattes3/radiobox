@@ -207,13 +207,13 @@ function getDIDLItemXml(stations: RadioStation[]) {
 
     const items = stations.map((station, index) => {
         return `
-        <item id="${index + 1}" parentID="0" restricted="1">
+        <item id="${index + 1}" parentID="0" restricted="0">
             <dc:title>${station.name}</dc:title>
             <dc:creator>radio</dc:creator>
             <upnp:album></upnp:album>
             <upnp:artist></upnp:artist>
-            <res protocolInfo="http-get:*:application/octet-stream:*">${station.streamUrl}</res>
-            <upnp:class>object.item</upnp:class>
+            <res protocolInfo="http-get:*:audio/x-mpeg:*">${station.streamUrl}</res>
+            <upnp:class>object.item.audioItem</upnp:class>
         </item>
     `.trim();
     });

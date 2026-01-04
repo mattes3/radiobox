@@ -18,7 +18,7 @@ const radioStations: RadioStationWithoutId[] = [
     },
     {
         name: 'BR-Klassik',
-        streamUrl: 'http://streams.br.de/br-klassik_3.m3u',
+        streamUrl: 'https://dispatcher.rndfnk.com/br/brklassik/live/mp3/high',
     },
     {
         name: 'BR Puls',
