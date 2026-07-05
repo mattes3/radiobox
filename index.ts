@@ -20,23 +20,23 @@ function sendXml(xml: string) {
     });
 }
 
-const server = Bun.serve({
+const server: ReturnType<typeof Bun.serve> = Bun.serve({
     port: HTTP_PORT,
     routes: {
         '/description.xml': {
-            GET: (req) => {
+            GET: (req): Response => {
                 console.log(server.requestIP(req), 'HTTP GET ', req.url);
                 return sendXml(getDescriptionXml());
             },
         },
         '/cds.xml': {
-            GET: (req) => {
+            GET: (req): Response => {
                 console.log(server.requestIP(req), 'HTTP GET ', req.url);
                 return sendXml(getCdsXml());
             },
         },
         '/cds-control': {
-            POST: async (req) => {
+            POST: async (req): Promise<Response> => {
                 const body = await req.text();
                 console.log(server.requestIP(req), 'HTTP POST', req.url, body);
                 if (body.includes('Browse')) {
@@ -81,8 +81,26 @@ const server = Bun.serve({
                 return new Response('Invalid request', { status: 400 });
             },
         },
+        '/station.m3u': {
+            GET: (req): Response => {
+                console.log(server.requestIP(req), 'HTTP GET ', req.url);
+                const url = new URL(req.url, `http://localhost:${server.port}`);
+                const originalStreamUrl = url.searchParams.get('originalStreamUrl');
+
+                if (!originalStreamUrl) {
+                    return new Response('Missing originalStreamUrl query parameter', {
+                        status: 400,
+                    });
+                }
+
+                const m3u: string = `#EXTM3U\n#EXTINF:-1,Stream\n${originalStreamUrl}\n`;
+                return new Response(m3u, {
+                    headers: { 'Content-Type': 'audio/x-mpegurl' },
+                });
+            },
+        },
         '/*': {
-            OPTIONS: () => {
+            OPTIONS: (): Response => {
                 const response = new Response(null, {
                     headers: {
                         'Access-Control-Allow-Origin': '*',

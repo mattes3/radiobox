@@ -6,7 +6,7 @@ type RadioStationWithoutId = Omit<RadioStation, 'id'>;
 const radioStations: RadioStationWithoutId[] = [
     {
         name: 'Bayern 1',
-        streamUrl: 'http://streams.br.de/bayern1obb_2.m3u',
+        streamUrl: 'http://dispatcher.rndfnk.com/br/br1/obb/mp3/mid',
     },
     {
         name: 'Bayern 2',

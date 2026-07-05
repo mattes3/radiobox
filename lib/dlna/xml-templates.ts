@@ -7,6 +7,7 @@ import {
     SERVER_URL,
 } from './config';
 import { getOrCreateUUID } from './utils';
+import { wrapStreamUrl } from './wrapStreamUrl';
 
 export function getDescriptionXml() {
     return `
@@ -212,7 +213,7 @@ function getDIDLItemXml(stations: RadioStation[]) {
             <dc:creator>radio</dc:creator>
             <upnp:album></upnp:album>
             <upnp:artist></upnp:artist>
-            <res protocolInfo="http-get:*:audio/x-mpegurl:*">${station.streamUrl}</res>
+            <res protocolInfo="http-get:*:audio/x-mpegurl:*">${wrapStreamUrl(station.streamUrl)}</res>
             <upnp:class>object.item.audioItem</upnp:class>
         </item>
     `.trim();
