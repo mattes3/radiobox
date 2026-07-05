@@ -37,6 +37,22 @@ const radioStations: RadioStationWithoutId[] = [
         streamUrl: 'http://dispatcher.rndfnk.com/hr/hr4/rheinmain/high',
     },
     {
+        name: 'MDR Aktuell',
+        streamUrl: 'http://mdr-284340-0.cast.mdr.de/mdr/284340/0/mp3/high/stream.mp3',
+    },
+    {
+        name: 'MDR Sachsen',
+        streamUrl: 'http://mdr-990100-0.cast.mdr.de/mdr/990100/0/mp3/high/stream.mp3',
+    },
+    {
+        name: 'MDR Sachsen-Anhalt',
+        streamUrl: 'http://mdr-284290-0.cast.mdr.de/mdr/284290/0/mp3/high/stream.mp3',
+    },
+    {
+        name: 'MDR Thueringen',
+        streamUrl: 'http://mdr-284300-0.cast.mdr.de/mdr/284300/0/mp3/high/stream.mp3',
+    },
+    {
         name: 'NDR 1',
         streamUrl: 'http://icecast.ndr.de/ndr/ndr1niedersachsen/oldenburg/mp3/128/stream.mp3',
     },
