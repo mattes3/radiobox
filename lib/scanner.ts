@@ -21,54 +21,6 @@ const radioStations: RadioStationWithoutId[] = [
         streamUrl: 'http://dispatcher.rndfnk.com/br/brklassik/live/mp3/high',
     },
     {
-        name: 'BBC 1',
-        streamUrl: 'http://stream.live.vc.bbcmedia.co.uk/bbc_radio_one',
-    },
-    {
-        name: 'BBC 1 Xtra',
-        streamUrl: 'http://stream.live.vc.bbcmedia.co.uk/bbc_1xtra',
-    },
-    {
-        name: 'BBC 2',
-        streamUrl: 'http://stream.live.vc.bbcmedia.co.uk/bbc_radio_two',
-    },
-    {
-        name: 'BBC 3',
-        streamUrl: 'http://stream.live.vc.bbcmedia.co.uk/bbc_radio_three',
-    },
-    {
-        name: 'BBC 4 FM',
-        streamUrl: 'http://stream.live.vc.bbcmedia.co.uk/bbc_radio_fourfm',
-    },
-    {
-        name: 'BBC 4 LW',
-        streamUrl: 'http://stream.live.vc.bbcmedia.co.uk/bbc_radio_fourlw_online_nonuk',
-    },
-    {
-        name: 'BBC 4 Extra',
-        streamUrl: 'http://stream.live.vc.bbcmedia.co.uk/bbc_radio_four_extra',
-    },
-    {
-        name: 'BBC 5',
-        streamUrl: 'http://stream.live.vc.bbcmedia.co.uk/bbc_radio_five_live_online_nonuk',
-    },
-    {
-        name: 'BBC 5 Sport Extra',
-        streamUrl: 'http://stream.live.vc.bbcmedia.co.uk/bbc_radio_five_live_sports_extra',
-    },
-    {
-        name: 'BBC 6 Music',
-        streamUrl: 'http://stream.live.vc.bbcmedia.co.uk/bbc_6music',
-    },
-    {
-        name: 'BBC Scotland',
-        streamUrl: 'http://stream.live.vc.bbcmedia.co.uk/bbc_radio_scotland_fm',
-    },
-    {
-        name: 'BBC Wales',
-        streamUrl: 'http://stream.live.vc.bbcmedia.co.uk/bbc_radio_wales_fm',
-    },
-    {
         name: 'BBC World Service',
         streamUrl: 'http://stream.live.vc.bbcmedia.co.uk/bbc_world_service',
     },
