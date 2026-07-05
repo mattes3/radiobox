@@ -37,6 +37,18 @@ const radioStations: RadioStationWithoutId[] = [
         streamUrl: 'http://dispatcher.rndfnk.com/hr/hr4/rheinmain/high',
     },
     {
+        name: 'NDR 1',
+        streamUrl: 'http://icecast.ndr.de/ndr/ndr1niedersachsen/oldenburg/mp3/128/stream.mp3',
+    },
+    {
+        name: 'NDR 2',
+        streamUrl: 'http://icecast.ndr.de/ndr/ndr2/hamburg/mp3/128/stream.mp3',
+    },
+    {
+        name: 'NDR Kultur',
+        streamUrl: 'http://icecast.ndr.de/ndr/ndrkultur/live/mp3/128/stream.mp3',
+    },
+    {
         name: 'SWR 1',
         streamUrl: 'http://dispatcher.rndfnk.com/swr/swr1/bw/mp3/128/stream.mp3?aggregator=web',
     },
