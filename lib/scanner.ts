@@ -22,15 +22,15 @@ const radioStations: RadioStationWithoutId[] = [
     },
     {
         name: 'HR 1',
-        streamUrl: 'https://dispatcher.rndfnk.com/hr/hr1/live/mp3/high',
+        streamUrl: 'http://dispatcher.rndfnk.com/hr/hr1/live/mp3/high',
     },
     {
         name: 'HR 2',
-        streamUrl: 'https://dispatcher.rndfnk.com/hr/hr2/live/mp3/high',
+        streamUrl: 'http://dispatcher.rndfnk.com/hr/hr2/live/mp3/high',
     },
     {
         name: 'HR 3',
-        streamUrl: 'https://dispatcher.rndfnk.com/hr/hr3/live/mp3/high',
+        streamUrl: 'http://dispatcher.rndfnk.com/hr/hr3/live/mp3/high',
     },
     {
         name: 'HR 4',
