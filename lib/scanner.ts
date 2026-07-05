@@ -21,6 +21,22 @@ const radioStations: RadioStationWithoutId[] = [
         streamUrl: 'http://dispatcher.rndfnk.com/br/brklassik/live/mp3/high',
     },
     {
+        name: 'HR 1',
+        streamUrl: 'https://dispatcher.rndfnk.com/hr/hr1/live/mp3/high',
+    },
+    {
+        name: 'HR 2',
+        streamUrl: 'https://dispatcher.rndfnk.com/hr/hr2/live/mp3/high',
+    },
+    {
+        name: 'HR 3',
+        streamUrl: 'https://dispatcher.rndfnk.com/hr/hr3/live/mp3/high',
+    },
+    {
+        name: 'HR 4',
+        streamUrl: 'http://dispatcher.rndfnk.com/hr/hr4/rheinmain/high',
+    },
+    {
         name: 'SWR 1',
         streamUrl: 'http://dispatcher.rndfnk.com/swr/swr1/bw/mp3/128/stream.mp3?aggregator=web',
     },
