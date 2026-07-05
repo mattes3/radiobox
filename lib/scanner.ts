@@ -21,10 +21,6 @@ const radioStations: RadioStationWithoutId[] = [
         streamUrl: 'http://streams.br.de/br-klassik_3.m3u',
     },
     {
-        name: 'BR Puls',
-        streamUrl: 'http://streams.br.de/puls_2.m3u',
-    },
-    {
         name: 'SWR 1',
         streamUrl: 'http://liveradio.swr.de/sw282p3/swr1bw/play.m3u',
     },
