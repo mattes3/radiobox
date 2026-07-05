@@ -38,19 +38,23 @@ const radioStations: RadioStationWithoutId[] = [
     },
     {
         name: 'WDR 2',
-        streamUrl: 'http://wdr-wdr2-rheinland.icecast.wdr.de/wdr/wdr2/rheinland/mp3/128/stream.mp3?ar-distributor=ffa1',
+        streamUrl:
+            'http://wdr-wdr2-rheinland.icecast.wdr.de/wdr/wdr2/rheinland/mp3/128/stream.mp3?ar-distributor=ffa1',
     },
     {
         name: 'WDR 3',
-        streamUrl: 'http://wdr-wdr3-live.icecast.wdr.de/wdr/wdr3/live/mp3/256/stream.mp3?ar-distributor=ffa1',
+        streamUrl:
+            'http://wdr-wdr3-live.icecast.wdr.de/wdr/wdr3/live/mp3/256/stream.mp3?ar-distributor=ffa1',
     },
     {
         name: 'WDR 4',
-        streamUrl: 'http://wdr-wdr4-live.icecast.wdr.de/wdr/wdr4/live/mp3/128/stream.mp3?ar-distributor=ffa1',
+        streamUrl:
+            'http://wdr-wdr4-live.icecast.wdr.de/wdr/wdr4/live/mp3/128/stream.mp3?ar-distributor=ffa1',
     },
     {
         name: 'WDR 5',
-        streamUrl: 'http://wdr-wdr5-live.icecast.wdr.de/wdr/wdr5/live/mp3/128/stream.mp3?ar-distributor=ffa1',
+        streamUrl:
+            'http://wdr-wdr5-live.icecast.wdr.de/wdr/wdr5/live/mp3/128/stream.mp3?ar-distributor=ffa1',
     },
 ];
 
@@ -72,4 +76,3 @@ export function findStation(id: string): Option<RadioStation> {
     const station = allStations().find((s) => s.id === id);
     return station ? Some(station) : None;
 }
-http://streams.br.de/bayern3_2.m3u
